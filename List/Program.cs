@@ -86,7 +86,7 @@ namespace List
             _items[_size++] = item;
             _version++;
         }
-        public void EnsureCapacity(int min)
+        private void EnsureCapacity(int min)
         {
             if (_items.Length < min)
             {
