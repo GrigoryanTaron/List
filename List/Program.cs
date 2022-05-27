@@ -186,53 +186,6 @@ namespace List
             _size++;
             _version++;
         }
-        //public void InsertRange(int index, IEnumerable collection)
-        //{
-        //    if (collection == null)
-        //    {
-        //        throw new NullReferenceException("collection=nuul");
-        //    }
-        //    if ((uint)index > (uint)_size)
-        //    {
-        //        throw new ArgumentException("index>size");
-        //    }
-        //    ICollection c = collection as ICollection;
-        //    if (c != null)
-        //    {
-        //        int count = c.Count;
-        //        if (count > 0)
-        //        {
-        //            EnsureCapacity(_size + count);
-        //            if (index < _size)
-        //            {
-        //                Array.Copy(_items, index, _items, index + count, _size - index);
-        //            }
-        //            if (this == c)
-        //            {
-        //                Array.Copy(_items, 0, _items, index, index);
-        //                Array.Copy(_items, index + count, _items, index * 2, _size - index);
-        //            }
-        //            else
-        //            {
-        //                int[] itemsToInsert = new int[count];
-        //                c.CopyTo(itemsToInsert, 0);
-        //                itemsToInsert.CopyTo(_items, index);
-        //            }
-        //            _size += count;
-        //        }
-        //        else
-        //        {
-        //            using (IEnumerator en = collection.GetEnumerator())
-        //            {
-        //                while (en.MoveNext())
-        //                {
-        //                    Insert(index++, en.Current);
-        //                }
-        //            }
-        //        }
-        //        _version++;
-        //    }
-        //}
         public int LastIndexOf(int item)
         {
             if (_size == 0)
