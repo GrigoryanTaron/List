@@ -8,7 +8,48 @@ namespace List
     {
         static void Main(string[] args)
         {
+            _List _list=new _List();
+            _list.Add(59);
+            _list.Add(19);
+            _list.Add(71);
+            _list.Add(717);
+            _list.Add(7);
+            foreach(var item in _list)
+            {
+                Console.WriteLine(item);
+            }
+            _list[0] = 77;
+            foreach(var item in _list)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine(_list.Capacity);
+            Console.WriteLine(_list.Count);
+            _list.Clear();
+            foreach (var item in _list)
+            {
+                Console.WriteLine(item);
+            }
+            int[] arr = new int[7];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = new Random().Next(1, 5);
+            }
+            _List _list2 = new _List(arr);
 
+            foreach( var item in _list2)
+            {
+                Console.WriteLine(item);
+            }
+            _List _list3=  new _List();
+            _list3.Add(71);
+            _list3.Add(717);
+            _list3.Insert(1, 17);
+            foreach(var item in _list3)
+            {
+                Console.WriteLine(item);
+            }
+           
         }
     }
     public class _List
@@ -22,6 +63,50 @@ namespace List
         public _List()
         {
             _items = _emptyArray;
+        }
+        public _List(int capacity)
+        {
+            if (capacity < 0)
+                throw new ArgumentOutOfRangeException();
+            if (capacity == 0)
+                _items = _emptyArray;
+            else
+                _items = new int[capacity];
+        }
+        public _List(IEnumerable<int> collection)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException();
+            }
+            ICollection<int> c = collection as ICollection<int>;
+            if (c != null)
+            {
+                int count = c.Count;
+                if (count == 0)
+                {
+                    _items = _emptyArray;
+                }
+                else
+                {
+                    _items = new int[count];
+                    c.CopyTo(_items, 0);
+                    _size = count;
+                }
+            }
+            else
+            {
+                _size = 0;
+                _items = _emptyArray;
+                using (IEnumerator<int> en = collection.GetEnumerator())
+                {
+                    while (en.MoveNext())
+                    {
+                        Add(en.Current);
+                    }
+                };
+            }
+
         }
         public int this[int index]
         {
