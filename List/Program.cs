@@ -90,6 +90,19 @@ namespace List
             {
                 Console.WriteLine(item);
             }
+            list4.ToArray();
+            Console.WriteLine(new string('_', 50));
+            foreach (var item in list4)
+            {
+                Console.WriteLine(item);
+            }
+            string[] array = new string[] { "a", "b", "c","d","e","f","g","h","i","j" };
+            list4.CopyTo(array);
+            Console.WriteLine(new string('_', 50));
+            foreach (var item in array)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
         }
     }

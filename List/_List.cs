@@ -119,6 +119,12 @@ namespace List
                 return _size;
             }
         }
+        public T[] ToArray()
+        {
+            T[] array = new T[_size];
+            Array.Copy(_items, 0, array, 0, _size);
+            return array;
+        }
         public void Add(T item)
         {
             if (_size == _items.Length) EnsureCapacity(_size + 1);
