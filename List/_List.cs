@@ -133,50 +133,6 @@ namespace List
         {
             return new Enumerator(this);
         }
-        public class Enumerator : IEnumerator
-        {
-            private _List<T> list;
-            private int index;
-            private int version;
-            private T current;
-            public Enumerator(_List<T> list)
-            {
-                this.list = list;
-                index = 0;
-                current = default(T);
-            }
-            public bool MoveNext()
-            {
-                _List<T> localList = list;
-                if ((uint)index < (uint)localList._size)
-                {
-                    current = localList._items[index];
-                    index++;
-                    return true;
-                }
-                return MoveNextRare();
-            }
-            private bool MoveNextRare()
-            {
-                index = list._size + 1;
-                current = default(T);
-                return false;
-            }
-            public object Current
-            {
-                get
-                {
-                    if (index == 0 || index == list._size + 1)
-                    {
-                        throw new InvalidOperationException();
-                    }
-                    return current;
-                }
-            }
-            public void Reset()
-            {
-            }
-        }
         public void Clear()
         {
             if (_size > 0)
@@ -422,6 +378,50 @@ namespace List
                     newCapacity = 0X7FEFFFFF;
                 if (newCapacity < min) newCapacity = min;
                 Capacity = newCapacity;
+            }
+        }
+        public class Enumerator : IEnumerator
+        {
+            private _List<T> list;
+            private int index;
+            private int version;
+            private T current;
+            public Enumerator(_List<T> list)
+            {
+                this.list = list;
+                index = 0;
+                current = default(T);
+            }
+            public bool MoveNext()
+            {
+                _List<T> localList = list;
+                if ((uint)index < (uint)localList._size)
+                {
+                    current = localList._items[index];
+                    index++;
+                    return true;
+                }
+                return MoveNextRare();
+            }
+            private bool MoveNextRare()
+            {
+                index = list._size + 1;
+                current = default(T);
+                return false;
+            }
+            public object Current
+            {
+                get
+                {
+                    if (index == 0 || index == list._size + 1)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                    return current;
+                }
+            }
+            public void Reset()
+            {
             }
         }
     }
