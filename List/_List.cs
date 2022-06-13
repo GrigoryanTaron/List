@@ -125,6 +125,10 @@ namespace List
             _items[_size++] = item;
             _version++;
         }
+        public void AddRange(IEnumerable<T> collection)
+        {
+            InsertRange(_size, collection);
+        }
         public Enumerator GetEnumerator()
         {
             return new Enumerator(this);

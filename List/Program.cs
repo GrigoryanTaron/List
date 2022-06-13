@@ -8,6 +8,7 @@ namespace List
     {
         static void Main(string[] args)
         {
+            #region ListInt
             _List<int> _list = new _List<int>();
             _list.Add(59);
             _list.Add(19);
@@ -48,26 +49,48 @@ namespace List
             {
                 Console.WriteLine(item);
             }
+            #endregion
+
+            #region ListString
             _List<string> list4 = new _List<string>();
             list4.Add("Hello");
             list4.Add("World");
             list4.Add("77");
-            foreach(var item in list4)
+            foreach (var item in list4)
             {
                 Console.WriteLine(item);
             }
-            Console.WriteLine(new string('_' , 50));
+            Console.WriteLine(new string('_', 50));
             list4[2] = "717";
             foreach (var item in list4)
             {
                 Console.WriteLine(item);
             }
-            list4.InsertRange(3,new string[]{ "good","morning"});
+            list4.InsertRange(3, new string[] { "good", "morning" });
             Console.WriteLine(new string('_', 50));
             foreach (var item in list4)
             {
                 Console.WriteLine(item);
             }
+            list4.AddRange(new List<string> { "3", "test" });
+            Console.WriteLine(new string('_', 50));
+            foreach (var item in list4)
+            {
+                Console.WriteLine(item);
+            }
+            list4.Remove("717");
+            Console.WriteLine(new string('_', 50));
+            foreach (var item in list4)
+            {
+                Console.WriteLine(item);
+            }
+            list4.Reverse(0, 6);
+            Console.WriteLine(new string('_', 50));
+            foreach (var item in list4)
+            {
+                Console.WriteLine(item);
+            }
+            #endregion
         }
     }
 }
